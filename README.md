@@ -1,4 +1,4 @@
-# ⚡ vite-react-ts-firebaseAuth-starter
+# ⚡ A personal, opinionated version of a vite-react-ts-starter
 
 A base template using Vite + React + Typescript + Firebase Auth + React Router
 
