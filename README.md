@@ -1,9 +1,33 @@
-# Vite + React + Typescript + Eslint + Prettier
+# ⚡ vite-react-ts-firebaseAuth-starter
 
-## Installation
+A base template using Vite + React + Typescript + Firebase Auth + React Router
 
-Clone the repo and run `yarn install`
+## Motivation
 
-## Start
+Improve setup time for new project by getting a project base out of the box with the following libraries
 
-After the successfull installation of the packages: `yarn dev`
+- Vite
+- React
+- Typescript
+- React Router
+- Firebase Auth
+- Code formatting
+  - ESLint
+  - Prettier
+  - Husky (pre-commit hook)
+
+## Set up
+
+```shell
+npx degit tobiashansen/vite-react-ts-firebaseAuth-starter
+npm install
+
+mv .env.local.example .env.local
+```
+
+### Firebase Auth
+
+- Create a Firebase project
+- Enable webapp for the Firebase project
+- Copy config values into `.env.locel`
+- Enable GoogleAuth for the Firebase project
