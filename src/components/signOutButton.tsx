@@ -1,28 +1,20 @@
-import { Button, Tooltip } from '@mantine/core';
-import { useState } from 'react';
+import { Button } from '@mantine/core';
 import { Logout } from 'tabler-icons-react';
 
+import { TooltipText } from '~/components/tooltipText';
 import { useAuth } from '~/firebase';
 
 export const SignOutButton = () => {
-  const [opened, setOpened] = useState(false);
-
   const handleClick = () => {
     const auth = useAuth();
     auth.signOut();
   };
 
   return (
-    <Tooltip opened={opened} label="Sign out" withArrow>
-      <Button
-        onClick={handleClick}
-        variant="subtle"
-        size="xs"
-        onMouseEnter={() => setOpened(true)}
-        onMouseLeave={() => setOpened(false)}
-      >
+    <TooltipText label="Sign out">
+      <Button onClick={handleClick} variant="subtle" size="xs">
         <Logout />
       </Button>
-    </Tooltip>
+    </TooltipText>
   );
 };

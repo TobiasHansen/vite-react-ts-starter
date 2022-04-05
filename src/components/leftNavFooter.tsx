@@ -4,7 +4,11 @@ import { SignInButton } from '~/components/signInButton';
 import { SignOutButton } from '~/components/signOutButton';
 import { useAuthState, useUser } from '~/contexts/authContext';
 
-export const LeftNavFooter = () => {
+interface Props {
+  navOpen: boolean;
+}
+
+export const LeftNavFooter = ({ navOpen }: Props) => {
   const theme = useMantineTheme();
   const { state } = useAuthState();
   const { user } = useUser();
@@ -15,14 +19,14 @@ export const LeftNavFooter = () => {
         <Box
           sx={{
             paddingTop: theme.spacing.sm,
-            borderTop: `1px solid ${
+            borderTop: `2px solid ${
               theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
             }`,
           }}
         >
           <Group position="center" spacing="xl">
             {state.state === 'SIGNED_OUT' ? (
-              <SignInButton />
+              <SignInButton minimize={!navOpen} />
             ) : (
               <>
                 <Avatar size={40} color="blue">
@@ -31,8 +35,13 @@ export const LeftNavFooter = () => {
                     .map((s) => s[0])
                     .join('')}
                 </Avatar>
-                <Text>{user?.displayName ?? ''}</Text>
-                <SignOutButton />
+
+                {navOpen && (
+                  <>
+                    <Text>{user?.displayName ?? ''}</Text>
+                    <SignOutButton />
+                  </>
+                )}
               </>
             )}
           </Group>

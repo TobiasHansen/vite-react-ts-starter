@@ -1,13 +1,15 @@
-import { Button, Tooltip } from '@mantine/core';
+import { ActionIcon, Button } from '@mantine/core';
 import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
-import { useState } from 'react';
 import { BrandGoogle, Login } from 'tabler-icons-react';
 
+import { TooltipText } from '~/components/tooltipText';
 import { useAuth } from '~/firebase';
 
-export const SignInButton = () => {
-  const [opened, setOpened] = useState(false);
+interface Props {
+  minimize: boolean;
+}
 
+export const SignInButton = ({ minimize = false }: Props) => {
   const handleClick = () => {
     const provider = new GoogleAuthProvider();
     const auth = useAuth();
@@ -17,17 +19,21 @@ export const SignInButton = () => {
   };
 
   return (
-    <Tooltip opened={opened} label="Sign in with Google" withArrow>
-      <Button
-        onClick={handleClick}
-        variant="outline"
-        leftIcon={<Login />}
-        rightIcon={<BrandGoogle />}
-        onMouseEnter={() => setOpened(true)}
-        onMouseLeave={() => setOpened(false)}
-      >
-        Sign in
-      </Button>
-    </Tooltip>
+    <TooltipText label="Sign in with Google">
+      {minimize ? (
+        <Button variant="outline" onClick={handleClick}>
+          <Login />
+        </Button>
+      ) : (
+        <Button
+          onClick={handleClick}
+          variant="outline"
+          leftIcon={<Login />}
+          rightIcon={<BrandGoogle />}
+        >
+          Sign in
+        </Button>
+      )}
+    </TooltipText>
   );
 };

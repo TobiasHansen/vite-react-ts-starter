@@ -1,39 +1,22 @@
-import {
-  ActionIcon,
-  AppShell,
-  Group,
-  Header,
-  Navbar,
-  Title,
-  useMantineColorScheme,
-} from '@mantine/core';
+import { AppShell, Navbar } from '@mantine/core';
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { MoonStars, Sun } from 'tabler-icons-react';
 
 import { LeftNav } from '~/components/leftNav';
 import { LeftNavFooter } from '~/components/leftNavFooter';
+import { LeftNavHeader } from '~/components/leftNavHeader';
 
 export const AppLayout = () => {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
+  const [navOpen, setNavOpen] = useState(true);
   return (
     <AppShell
       padding="md"
       navbar={
-        <Navbar width={{ base: 300 }} height={500} p="xs">
-          <LeftNav />
-          <LeftNavFooter />
+        <Navbar width={{ base: navOpen ? 300 : 80 }} p="xs">
+          <LeftNavHeader navOpen={navOpen} setNavOpen={setNavOpen} />
+          <LeftNav navOpen={navOpen} />
+          <LeftNavFooter navOpen={navOpen} />
         </Navbar>
-      }
-      header={
-        <Header height={60}>
-          <Group sx={{ height: '100%' }} px={20} position="apart">
-            <Title>Project A</Title>
-            <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
-              {colorScheme === 'dark' ? <Sun size={16} /> : <MoonStars size={16} />}
-            </ActionIcon>
-          </Group>
-        </Header>
       }
       styles={(theme) => ({
         main: {

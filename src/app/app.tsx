@@ -1,4 +1,4 @@
-import { ColorScheme, ColorSchemeProvider, Global, MantineProvider } from '@mantine/core';
+import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { useState } from 'react';
 
 import Main from '~/app/main';

@@ -2,11 +2,19 @@ import { Navbar } from '@mantine/core';
 
 import { LeftNavLink } from '~/components/leftNavLink';
 
-export const LeftNav = () => {
+interface Props {
+  navOpen: boolean;
+}
+
+export const LeftNav = ({ navOpen }: Props) => {
   return (
     <Navbar.Section grow mt="xs">
-      <LeftNavLink label={'Frontpage'} to={'/'} />
-      <LeftNavLink label={'Page A'} to={'/page-a'} />
+      {navOpen && (
+        <>
+          <LeftNavLink label={'Frontpage'} to={'/'} />
+          <LeftNavLink label={'Page A'} to={'/page-a'} />
+        </>
+      )}
     </Navbar.Section>
   );
 };
