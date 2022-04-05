@@ -1,14 +1,14 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
 
 import { useSignIn, useSignOut } from '~/contexts/authContext';
 import { setupFirebase } from '~/firebase';
+import { useMountEffect } from '~/hooks/useMountEffect';
 import { Router } from '~/routing/router';
 
 function Main() {
   const { signIn } = useSignIn();
   const { signOut } = useSignOut();
-  useEffect(() => {
+  useMountEffect(() => {
     setupFirebase();
 
     const auth = getAuth();
@@ -20,7 +20,7 @@ function Main() {
         signOut();
       }
     });
-  }, []);
+  });
   return (
     <main>
       <Router />
