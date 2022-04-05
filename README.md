@@ -1,6 +1,6 @@
 # ⚡ A personal, opinionated version of a vite-react-ts-starter
 
-A base template using Vite + React + Typescript + Firebase Auth + React Router
+A base template using Vite + React + Typescript + Firebase Auth + React Router + Mantine
 
 ## Motivation
 
@@ -9,6 +9,7 @@ Improve setup time for new project by getting a project base out of the box with
 - Vite
 - React
 - Typescript
+- Mantine
 - React Router
 - Firebase Auth
 - Code formatting
