@@ -50,7 +50,7 @@ export const LeftNavHeader = ({ navOpen, setNavOpen }: Props) => {
             </ActionIcon>
           </Group>
         ) : (
-          <Group position="center">
+          <Group position="center" spacing="md" align="center">
             <ActionIcon onClick={() => setNavOpen(!navOpen)} radius="xl" variant="hover">
               <ArrowBigRightLines size={32} strokeWidth={1.5} />
             </ActionIcon>

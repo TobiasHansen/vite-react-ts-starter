@@ -1,11 +1,13 @@
+import { Text } from '@mantine/core';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 
 import { AppLayout } from '~/components/appLayout';
 import IndexScreen from '~/pages';
 import PageAScreen from '~/pages/pageA';
+import { routes } from '~/routing/routes';
 
-const Loading = () => <p className="p-4 w-full h-full text-center">Loading...</p>;
+const Loading = () => <Text component="p">Loading...</Text>;
 
 //When lazy loading pages there will be a refresh-like feeling when visiting them for the first time
 const Page404Screen = lazy(() => import('~/pages/404'));
@@ -21,7 +23,7 @@ export const Router = () => {
 const InnerRouter = () => {
   const element = useRoutes([
     {
-      path: '/',
+      path: routes.frontpage.path,
       element: <AppLayout />,
       children: [
         {
@@ -29,7 +31,7 @@ const InnerRouter = () => {
           element: <IndexScreen />,
         },
         {
-          path: 'page-a',
+          path: routes.pageA.path,
           element: <PageAScreen />,
         },
         {
