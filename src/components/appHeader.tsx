@@ -4,7 +4,7 @@ import {
   Group,
   Header,
   MediaQuery,
-  Text,
+  Title,
   useMantineColorScheme,
   useMantineTheme,
 } from '@mantine/core';
@@ -20,7 +20,7 @@ export const AppHeader = ({ opened, setOpened }: Props) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
-    <Header height={70} p="md">
+    <Header height={80} p="md">
       <Group position="apart">
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
           <Burger
@@ -32,7 +32,7 @@ export const AppHeader = ({ opened, setOpened }: Props) => {
           />
         </MediaQuery>
 
-        <Text>Application header</Text>
+        <Title>Application header</Title>
         <ActionIcon variant="default" onClick={() => toggleColorScheme()} size={30}>
           {colorScheme === 'dark' ? <Sun size={16} /> : <MoonStars size={16} />}
         </ActionIcon>
