@@ -6,7 +6,7 @@ import { TooltipText } from '~/components/tooltipText';
 import { useAuth } from '~/firebase';
 
 interface Props {
-  minimize: boolean;
+  minimize?: boolean;
 }
 
 export const SignInButton = ({ minimize = false }: Props) => {

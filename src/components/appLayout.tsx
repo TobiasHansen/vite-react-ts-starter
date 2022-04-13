@@ -1,29 +1,25 @@
-import { AppShell, Navbar } from '@mantine/core';
+import { AppShell, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { AppHeader } from '~/components/appHeader';
 import { LeftNav } from '~/components/leftNav';
-import { LeftNavFooter } from '~/components/leftNavFooter';
-import { LeftNavHeader } from '~/components/leftNavHeader';
 
 export const AppLayout = () => {
-  const [navOpen, setNavOpen] = useState(true);
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
   return (
     <AppShell
-      padding="md"
-      navbar={
-        <Navbar width={{ base: navOpen ? 300 : 80 }} p="xs">
-          <LeftNavHeader navOpen={navOpen} setNavOpen={setNavOpen} />
-          <LeftNav navOpen={navOpen} />
-          <LeftNavFooter navOpen={navOpen} />
-        </Navbar>
-      }
-      styles={(theme) => ({
+      styles={{
         main: {
-          backgroundColor:
+          background:
             theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
         },
-      })}
+      }}
+      navbarOffsetBreakpoint="sm"
+      fixed
+      navbar={<LeftNav opened={opened} />}
+      header={<AppHeader opened={opened} setOpened={setOpened} />}
     >
       <Outlet />
     </AppShell>

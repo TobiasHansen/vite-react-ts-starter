@@ -5,10 +5,10 @@ import { SignOutButton } from '~/components/signOutButton';
 import { useAuthState, useUser } from '~/contexts/authContext';
 
 interface Props {
-  navOpen: boolean;
+  opened: boolean;
 }
 
-export const LeftNavFooter = ({ navOpen }: Props) => {
+export const LeftNavFooter = ({ opened }: Props) => {
   const theme = useMantineTheme();
   const { state } = useAuthState();
   const { user } = useUser();
@@ -26,7 +26,7 @@ export const LeftNavFooter = ({ navOpen }: Props) => {
         >
           <Group position="center" spacing="xl">
             {state.state === 'SIGNED_OUT' ? (
-              <SignInButton minimize={!navOpen} />
+              <SignInButton />
             ) : (
               <>
                 <Avatar size={40} color="blue">
@@ -35,13 +35,8 @@ export const LeftNavFooter = ({ navOpen }: Props) => {
                     .map((s) => s[0])
                     .join('')}
                 </Avatar>
-
-                {navOpen && (
-                  <>
-                    <Text>{user?.displayName ?? ''}</Text>
-                    <SignOutButton />
-                  </>
-                )}
+                <Text>{user?.displayName ?? ''}</Text>
+                <SignOutButton />
               </>
             )}
           </Group>
